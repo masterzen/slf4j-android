@@ -10,7 +10,7 @@ import org.slf4j.spi.LoggerFactoryBinder;
  *
  * @author Nic Strong
  */
-public class StaticLoggerBinder implements LoggerFactoryBinder {
+public class StaticLoggerBinder implements LoggerFactoryBinder, LogBufferable {
 
   /**
    * The unique instance of this class.
@@ -43,9 +43,11 @@ public class StaticLoggerBinder implements LoggerFactoryBinder {
    */
   private final ILoggerFactory loggerFactory;
 
+  private final RingBuffer buffer = new RingBuffer(64 * 1024);
+  
   private StaticLoggerBinder() {
 //  Note: JCL gets substituted at build time by an appropriate Ant task
-    loggerFactory = new AndroidLoggerFactory();
+    loggerFactory = new AndroidLoggerFactory(buffer);
   }
 
   public ILoggerFactory getLoggerFactory() {
@@ -54,5 +56,10 @@ public class StaticLoggerBinder implements LoggerFactoryBinder {
 
   public String getLoggerFactoryClassStr() {
     return loggerFactoryClassStr;
+  }
+  
+  public String getBuffer()
+  {
+    return buffer.getLogs();
   }
 }

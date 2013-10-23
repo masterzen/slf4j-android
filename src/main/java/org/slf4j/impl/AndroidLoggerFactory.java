@@ -9,9 +9,11 @@ import java.util.Map;
 
 public class AndroidLoggerFactory implements ILoggerFactory {
 	Map<String, AndroidLogger> loggerMap;
+  private RingBuffer buffer;
 
-	public AndroidLoggerFactory() {
+	public AndroidLoggerFactory(RingBuffer buffer) {
 		loggerMap = new HashMap<String, AndroidLogger>();
+		this.buffer = buffer;
 	}
 
 	public synchronized Logger getLogger(String name) {
@@ -21,7 +23,7 @@ public class AndroidLoggerFactory implements ILoggerFactory {
 		synchronized (this) {
 			logger = loggerMap.get(name);
 			if (logger == null) {
-				logger = new AndroidLogger(tag);
+				logger = new AndroidLogger(tag, buffer);
 				loggerMap.put(name, logger);
 			}
 		}

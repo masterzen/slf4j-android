@@ -14,16 +14,14 @@ In your jars and apklibs add the following dependency:
   </dependency>
 ```
 
-Then in the Android app using the jars/apklibs that use slf4j add:
+This artifact is not pushed to any maven repository yet, but can be built very easily with Maven 3:
 
 ```
-  <dependency>
-     <groupId>com.daysofwonder.util</groupId>
-     <artifactId>slf4j-android-dow</artifactId>
-     <version>1.0.2</version>
-  </dependency>
-```  
-  
+mvn package
+```
+
+And installed locally or in your own maven repository.
+
 === What makes it so different ===  
   
 The main difference between this version and any other slf4j-android version (including the upstream) is 

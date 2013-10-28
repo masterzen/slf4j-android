@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.daysofwonder.util</groupId>
     <artifactId>slf4j-android-dow</artifactId>
-    <version>1.0</version>
+    <version>1.0.2</version>
     <packaging>jar</packaging>
     <name>SLF4J Android Logcat Support</name>
 

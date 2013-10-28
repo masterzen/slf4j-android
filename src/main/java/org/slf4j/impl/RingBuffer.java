@@ -6,13 +6,13 @@ public class RingBuffer
   
   public RingBuffer(int maxLines)
   {
-    ring = new CircularFifoQueue<String>();
+    ring = new CircularFifoQueue<String>(maxLines);
   }
   
   public synchronized String store(String level, String name, String txt)
   {
     try {
-      ring.add(level + " - " + name + ":" + txt);
+      ring.add(level + " - " + name + ": " + txt);
     } catch(Throwable t) {}
     return txt;
   }

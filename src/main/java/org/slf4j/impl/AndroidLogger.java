@@ -39,7 +39,7 @@ public class AndroidLogger  extends MarkerIgnoringBase {
 	}
 
 	public void trace(String msg, Throwable throwable) {
-    buffer.store("trace", name, msg);
+    buffer.store("trace", name, MessageFormatter.format(msg, throwable).getMessage());
 		Log.v(name, msg, throwable);
 	}
 
@@ -68,7 +68,7 @@ public class AndroidLogger  extends MarkerIgnoringBase {
 	}
 
 	public void debug(String msg, Throwable throwable) {
-    buffer.store("debug", name, msg);
+    buffer.store("debug", name, MessageFormatter.format(msg, throwable).getMessage());
 		Log.d(name, msg, throwable);
 	}
 
@@ -97,7 +97,7 @@ public class AndroidLogger  extends MarkerIgnoringBase {
 	}
 
 	public void info(String msg, Throwable throwable) {
-    buffer.store("info", name, msg);
+    buffer.store("debug", name, MessageFormatter.format(msg, throwable).getMessage());
 		Log.i(name, msg, throwable);
 	}
 
@@ -126,7 +126,7 @@ public class AndroidLogger  extends MarkerIgnoringBase {
 	}
 
 	public void warn(String msg, Throwable throwable) {
-    buffer.store("warn", name, msg);
+    buffer.store("warn", name, MessageFormatter.format(msg, throwable).getMessage());
 		Log.w(name, msg, throwable);
 	}
 
@@ -155,7 +155,7 @@ public class AndroidLogger  extends MarkerIgnoringBase {
 	}
 
 	public void error(String msg, Throwable throwable) {
-    buffer.store("error", name, msg);
+    buffer.store("error", name, MessageFormatter.format(msg, throwable).getMessage());
 		Log.e(name, msg, throwable);
 	}
 }

@@ -43,7 +43,7 @@ public class StaticLoggerBinder implements LoggerFactoryBinder, LogBufferable {
    */
   private final ILoggerFactory loggerFactory;
 
-  private final RingBuffer buffer = new RingBuffer(1024);
+  private final RingBuffer buffer = new RingBuffer(2048);
   
   private StaticLoggerBinder() {
 //  Note: JCL gets substituted at build time by an appropriate Ant task

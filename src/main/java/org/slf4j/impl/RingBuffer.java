@@ -12,7 +12,8 @@ public class RingBuffer
   public synchronized String store(String level, String name, String txt)
   {
     try {
-      ring.add(level + " - " + name + ": " + txt);
+      long ts = System.currentTimeMillis();
+      ring.add(ts + " " + level + " - " + name + ": " + txt);
     } catch(Throwable t) {}
     return txt;
   }
